@@ -20,3 +20,7 @@ A **Next.js** application for tracking cryptocurrency prices using the **CoinGec
 * **SWR**
 * **lightweight-charts**
 * **CoinGecko API**
+
+### Deployment
+
+The project is deployed on **Vercel**: [Crypto Tracker](https://traceum.vercel.app/)
