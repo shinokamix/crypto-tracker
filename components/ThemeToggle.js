@@ -1,7 +1,25 @@
-// components/ThemeToggle.jsx
 "use client";
+
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+
+import LightToggle from "../public/LightToggle.svg"
+import DarkToggle from "../public/DarkToggle.svg"
+
+function Light() {
+  return (
+    <Image  src={LightToggle} alt="" height={32} width={32}/>
+  )
+}
+
+function Dark() {
+  return (
+    <Image  src={DarkToggle} alt="" height={32} width={32}/>
+  )
+}
+
+
 
 export default function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme(); // "light" | "dark" (после маунта)
@@ -18,9 +36,9 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="px-3 py-1 border rounded"
+      className="m-3"
     >
-      {isDark ? "🌙 Тёмная" : "☀️ Светлая"}
+      {isDark ? <Dark /> : <Light />}
     </button>
   );
 }

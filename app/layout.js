@@ -1,15 +1,27 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import localFont from "next/font/local";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const Heading = localFont({
+  src: [
+    { path: "./fonts/Array-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/Array-Bold.woff2",    weight: "700", style: "normal" },
+    { path: "./fonts/Array-Semibold.woff2",    weight: "600", style: "normal" },
+  ],
+  variable: "--font-heading",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const Body = localFont({
+  src: [
+    { path: "./fonts/Satoshi-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/Satoshi-Bold.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/Satoshi-Italic.woff2", weight: "400", style: "italic" },
+    { path: "./fonts/Satoshi-BoldItalic.woff2", weight: "700", style: "italic" },
+
+  ],
+  variable: "--font-body",
+  display: "swap",
 });
 
 export const metadata = {
@@ -21,7 +33,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${Body.variable} ${Heading.variable} antialiased min-h-screen bg-background text-foreground`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>{children}</ThemeProvider>
       </body>

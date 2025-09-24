@@ -25,24 +25,73 @@ export default function PriceTable() {
 
 
   return (
-  <div className="flex justify-center align-middle my-5">
-    <ul className="border-2 w-2xl">
-      {visible.map((coin) => (
-        <li key={coin.id } >
-          <Link href={`/coin/${coin.id}`} className="p-1.5 flex justify-between">
-            <p> {coin.name} ({coin.symbol.toUpperCase()})</p>
-            <div className="flex">
-              <p> {coin.current_price} </p>
-              <FavoriteButton id={coin.id} />
-            </div>
-          </Link>
-        </li>
-      ))}
-      {onlyFav && visible.length === 0 && (
-        <p className="text-xl">В избранном пусто. Нажми ★ у нужных монет.</p>
-      )}
-    </ul>
-    
-  </div>
-  )
+    <div className="my-5 overflow-x-auto flex justify-center align-middle">
+      <table className="w-5xl table-auto border-collapse text-left">
+
+        <colgroup>
+          <col className="w-[50%]" />
+          <col className="w-[20%]" />
+          <col className="w-[15%]" />
+          <col className="w-[15%]" />
+        </colgroup>
+
+        <thead className="">
+          <tr>
+            <th scope="col" className="px-4 py-2">Name</th>
+            <th scope="col" className="px-4 py-2 text-right">Price</th>
+            <th scope="col" className="px-4 py-2 text-right">24H%</th>
+            <th scope="col" className="px-4 py-2 text-right"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {visible.map((coin) => {
+            const change = coin.price_change_percentage_24h;
+            const changeClass =
+              typeof change === "number"
+                ? change >= 0
+                  ? "text-green-600"
+                  : "text-red-600"
+                : "text-muted-foreground";
+
+            return (
+              <tr key={coin.id} className="border-t hover:bg-amber-400">
+                <td className="px-4 py-2">
+                  <Link
+                    href={`/coin/${coin.id}`}
+                    className="inline-flex items-center gap-2 hover:underline"
+                  >
+                    <span>{coin.name}</span>
+                    <span className="uppercase">
+                      ({coin.symbol?.toUpperCase()})
+                    </span>
+                  </Link>
+                </td>
+
+                <td className="px-4 py-2 text-right tabular-nums">
+                  {coin.current_price}
+                </td>
+
+                <td className={`px-4 py-2 text-right tabular-nums ${changeClass}`}>
+                  {change}%
+                </td>
+
+                <td className="px-4 py-2 text-right">
+                  <FavoriteButton id={coin.id} />
+                </td>
+              </tr>
+            );
+          })}
+
+          {onlyFav && visible.length === 0 && (
+            <tr>
+              <td colSpan={4} className="px-4 py-6 text-center">
+                В избранном пусто.
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
 }

@@ -1,5 +1,29 @@
 "use client";
 import { useUI } from "@/app/state/ui";
+import Image from "next/image";
+
+import FavoritesNotActive from "../public/FavoritesNotActive.svg"
+import FavoritesNotActiveDark from "../public/FavoritesNotActiveDark.svg"
+import FavoritesActive from "../public/FavoritesActive.svg"
+import FavoritesActiveDark from "../public/FavoritesActiveDark.svg"
+
+function Active() {
+  return (
+    <>
+      <Image src={FavoritesActive} alt="" height={32} width={32} className="block dark:hidden"/>
+      <Image src={FavoritesActiveDark} alt="" height={32} width={32} className="hidden dark:block"/>
+    </>
+  )
+}
+
+function NotActive() {
+  return (
+    <>
+      <Image src={FavoritesNotActive} alt="" height={32} width={32} className="block dark:hidden"/>
+      <Image src={FavoritesNotActiveDark} alt="" height={32} width={32} className="hidden dark:block"/>
+    </>
+  )
+}
 
 export default function FavoritesToggle() {
   const onlyFav = useUI(s => s.onlyFav);
@@ -8,13 +32,9 @@ export default function FavoritesToggle() {
   return (
     <button
     onClick={toggleOnlyFav}
-    className={`px-3 py-1 rounded border ${
-        onlyFav
-        ? "bg-white dark:bg-gray-900"
-        : "bg-white dark:bg-gray-900"
-    }`}
+    className="m-3"
     >
-    {onlyFav ? "Показать все" : "Избранное"}
+      {onlyFav ? <Active /> : <NotActive />}
     </button>
 );
 }
