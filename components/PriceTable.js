@@ -38,7 +38,7 @@ export default function PriceTable() {
         </colgroup>
 
         <thead className="">
-          <tr>
+          <tr className="">
             <th scope="col" className="px-4 ">Name</th>
             <th scope="col" className="px-4 py-2 text-right">Price</th>
             <th scope="col" className="px-4 py-2 text-right">24H%</th>
@@ -46,7 +46,7 @@ export default function PriceTable() {
           </tr>
         </thead>
 
-        <tbody>
+        <tbody className="">
           {visible.map((coin) => {
 
             return (
@@ -56,7 +56,7 @@ export default function PriceTable() {
                     href={`/coin/${coin.id}`}
                     className="min-h-2 gap-2 hover:underline"
                   >
-                    <div className="py-2">
+                    <div className="flex py-2 gap-1">
                       <span>{coin.name}</span>
                       <span className="uppercase">
                         ({coin.symbol?.toUpperCase()})

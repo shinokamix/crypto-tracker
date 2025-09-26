@@ -42,7 +42,7 @@ export default function FavoriteButton({ id }) {
       onClick={() => toggle(id)}
       aria-pressed={active}
       title={active ? "В избранном" : "Добавить в избранное"}
-      className={`px-2 text-xl ml-auto `}
+      className={`px-2 text-xl ml-auto hover: cursor-pointer`}
     >
       {active ? <Added /> : <Add />}
     </button>
