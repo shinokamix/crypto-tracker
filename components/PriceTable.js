@@ -37,7 +37,7 @@ export default function PriceTable() {
 
         <thead className="">
           <tr>
-            <th scope="col" className="px-4 py-2">Name</th>
+            <th scope="col" className="px-4 ">Name</th>
             <th scope="col" className="px-4 py-2 text-right">Price</th>
             <th scope="col" className="px-4 py-2 text-right">24H%</th>
             <th scope="col" className="px-4 py-2 text-right"></th>
@@ -56,15 +56,17 @@ export default function PriceTable() {
 
             return (
               <tr key={coin.id} className="border-t hover:bg-amber-400">
-                <td className="px-4 py-2">
+                <td className="px-4">
                   <Link
                     href={`/coin/${coin.id}`}
-                    className="inline-flex items-center gap-2 hover:underline"
+                    className="min-h-2 gap-2 hover:underline"
                   >
-                    <span>{coin.name}</span>
-                    <span className="uppercase">
-                      ({coin.symbol?.toUpperCase()})
-                    </span>
+                    <div className="py-2">
+                      <span>{coin.name}</span>
+                      <span className="uppercase">
+                        ({coin.symbol?.toUpperCase()})
+                      </span>
+                    </div>
                   </Link>
                 </td>
 
