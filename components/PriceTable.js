@@ -7,6 +7,8 @@ import { useUI } from "@/app/state/ui";
 import { useFavorites } from "@/app/state/favorites";
 import Link from "next/link";
 import fetcher from "@/app/misc/fetcher";
+import format from "@/app/misc/format";
+
 
 export default function PriceTable() {
   const { data, error, isLoading } = useSWR("/api/markets", fetcher);
@@ -46,13 +48,6 @@ export default function PriceTable() {
 
         <tbody>
           {visible.map((coin) => {
-            const change = coin.price_change_percentage_24h;
-            const changeClass =
-              typeof change === "number"
-                ? change >= 0
-                  ? "text-green-600"
-                  : "text-red-600"
-                : "text-muted-foreground";
 
             return (
               <tr key={coin.id} className="border-t hover:bg-amber-400">
@@ -71,11 +66,11 @@ export default function PriceTable() {
                 </td>
 
                 <td className="px-4 py-2 text-right tabular-nums">
-                  {coin.current_price}
+                  {format(coin.current_price)}
                 </td>
 
-                <td className={`px-4 py-2 text-right tabular-nums ${changeClass}`}>
-                  {change}%
+                <td className={`px-4 py-2 text-right tabular-nums ${coin.price_change_percentage_24h >= 0 ? "text-green-600" : "text-red-600"}`}>
+                  {coin.price_change_percentage_24h.toFixed(2)}%
                 </td>
 
                 <td className="px-4 py-2 text-right">
