@@ -10,7 +10,7 @@ export default function Home() {
     <div className="bg-background font-sans font-semibold">
       <Header/>
       <div className="text-center">
-        <h1 className="text-9xl font-mono my-10">Crypto Prices</h1>
+        <h1 className="text-9xl font-mono my-30">Crypto Prices</h1>
       </div>
       <PriceTable />
     </div>
