@@ -32,7 +32,7 @@ export default function FavoritesToggle() {
   return (
     <button
     onClick={toggleOnlyFav}
-    className="m-3 hover: cursor-pointer"
+    className="m-3 cursor-pointer transition-all duration-300 hover:scale-110"
     >
       {onlyFav ? <Active /> : <NotActive />}
     </button>

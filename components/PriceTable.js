@@ -28,21 +28,27 @@ export default function PriceTable() {
 
   return (
     <div className="my-5 overflow-x-auto flex justify-center align-middle">
-      <table className="w-5xl table-auto border-collapse text-left">
+      <table className="bg-[#D9D9D9] dark:bg-[#262626] w-5xl table-auto border-separate text-left border-spacing-y-3">
 
         <colgroup>
-          <col className="w-[50%]" />
-          <col className="w-[20%]" />
-          <col className="w-[15%]" />
+          <col className="w-[65%]" />
+          <col className="w-[10%]" />
+          <col className="w-[10%]" />
           <col className="w-[15%]" />
         </colgroup>
 
         <thead className="">
           <tr className="">
-            <th scope="col" className="px-4 ">Name</th>
+            <th scope="col" className="px-4">Name</th>
             <th scope="col" className="px-4 py-2 text-right">Price</th>
             <th scope="col" className="px-4 py-2 text-right">24H%</th>
             <th scope="col" className="px-4 py-2 text-right"></th>
+          </tr>
+          <tr className="bg-[var(--background)] h-3">
+            <td className=""></td>
+            <td className=""></td>
+            <td className=""></td>
+            <td className=""></td>
           </tr>
         </thead>
 
@@ -50,11 +56,11 @@ export default function PriceTable() {
           {visible.map((coin) => {
 
             return (
-              <tr key={coin.id} className="border-t hover:bg-amber-400">
+              <tr key={coin.id} className="bg-[var(--background)] dark:bg-[var(--bg-foreground] hover:bg-amber-400 transform-all duration-300 max-h-2 hover:scale-101 transform-gpu">
                 <td className="px-4">
                   <Link
                     href={`/coin/${coin.id}`}
-                    className="min-h-2 gap-2 hover:underline"
+                    className="min-h-2 gap-2"
                   >
                     <div className="flex py-2 gap-1">
                       <span>{coin.name}</span>

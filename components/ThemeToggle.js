@@ -36,7 +36,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="m-3 hover: cursor-pointer"
+      className="m-3 cursor-pointer transition-all duration-300 hover:scale-110"
     >
       {isDark ? <Dark /> : <Light />}
     </button>
