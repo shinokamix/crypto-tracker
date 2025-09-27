@@ -22,13 +22,12 @@ function Dark() {
 
 
 export default function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme(); // "light" | "dark" (после маунта)
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    // ничего не рендерим (или можно вернуть кнопку без текста/иконки)
     return null;
   }
 

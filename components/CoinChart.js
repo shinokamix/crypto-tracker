@@ -1,11 +1,16 @@
-import { LineSeries, createChart, ColorType } from 'lightweight-charts';
+import { LineSeries, createChart, ColorType, CrosshairMode } from 'lightweight-charts';
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from 'next-themes';
 
 export default function CoinChart(props) {
+    const { resolvedTheme, setTheme } = useTheme();
+
+    const isDark = resolvedTheme === "Dark";
+
     const {
         data,
         colors: {
-            backgroundColor = 'white',
+            backgroundColor = '#ededed',
             lineColor = '#2962FF',
             textColor = 'black',
             areaTopColor = '#2962FF',
@@ -23,11 +28,32 @@ export default function CoinChart(props) {
 
             const chart = createChart(chartContainerRef.current, {
                 layout: {
-                    background: { type: ColorType.Solid, color: backgroundColor },
+                    background: { type: ColorType.Solid, color: isDark ? "#121212" : "#ededed"},
                     textColor,
                 },
                 width: chartContainerRef.current.clientWidth,
                 height: 300,
+                grid: {
+                    vertLines: {visible: false },
+                    horzLines: {visible: false },
+                },
+                watermark: {
+                    visible: false,
+                },
+                rightPriceScale: {
+                    borderVisible: false,
+                    scaleMargins: { top: 0.1, bottom: 0.2 },
+                    mode: 0, // 0=Normal, 1=Logarithmic, 2=Percentage, 3=IndexedTo100
+                },
+                timeScale: {
+                    rightOffset: 5,
+                    barSpacing: 6,
+                    fixLeftEdge: true,
+                    lockVisibleTimeRangeOnResize: true,
+                    borderVisible: false,
+                    timeVisible: false,
+                    secondsVisible: false,
+                },
             });
             chart.timeScale().fitContent();
 

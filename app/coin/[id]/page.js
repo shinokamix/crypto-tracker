@@ -55,31 +55,28 @@ export default function CoinPage({params}) {
             <div className="ml-auto">
                 <ThemeToggle />
             </div>
-            <div className="flex m-5">
+            <div className="flex mx-80 justify-between">
                 <div>
                     <h1 className="font-mono text-9xl">
                         {`${coinData.name}`}
                     </h1>
-                    <div>
+                    <div className="mt-30">
                         <p> {"{"} </p>
                         <div className="ml-3">
                             <p> {`"current_price": ${price}`} </p>
                             <p> {`"market_cap": ${market_cap}`} </p>
                             <p> {`"market_cap":: ${coinData.market_cap}`} </p>
                             <p> {`"market_cap":: ${coinData.market_cap}`} </p>
-                            <p> {`"market_cap":: ${coinData.market_cap}`} </p>
-                            <p> {`"market_cap":: ${coinData.market_cap}`} </p>
-                            <p> {`"market_cap":: ${coinData.market_cap}`} </p>
                         </div>
                         <p> {"}"} </p>
                     </div>
                 </div>
-                <div className="flex">
+                <div className="flex mt-30 border-1 p-1">
                     <CoinChart data={series}/>
                 </div>
             </div>
             <div>
-                <p className="m-3">
+                <p className="my-40 mx-80">
                     {coinData.description.en}
                 </p>
             </div>
