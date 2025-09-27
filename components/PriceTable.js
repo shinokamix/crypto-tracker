@@ -5,7 +5,10 @@ import useSWR from "swr";
 import FavoriteButton from "./FavoriteButton";
 import { useUI } from "@/app/state/ui";
 import { useFavorites } from "@/app/state/favorites";
+
 import Link from "next/link";
+import Image from "next/image";
+
 import fetcher from "@/app/misc/fetcher";
 import format from "@/app/misc/format";
 
@@ -56,14 +59,15 @@ export default function PriceTable() {
           {visible.map((coin) => {
 
             return (
-              <tr key={coin.id} className="bg-[var(--background)] dark:bg-[var(--bg-foreground] hover:bg-amber-400 transform-all duration-300 max-h-2 hover:scale-101 transform-gpu">
+              <tr key={coin.id} className="bg-[var(--background)] dark:bg-[var(--bg-foreground] hover:bg-amber-400 dark:hover:bg-[#8D5BFF] transform-all duration-300 max-h-2 hover:scale-101 transform-gpu">
                 <td className="px-4">
                   <Link
                     href={`/coin/${coin.id}`}
-                    className="min-h-2 gap-2"
+                    className=""
                   >
-                    <div className="flex py-2 gap-1">
-                      <span>{coin.name}</span>
+                    <div className="flex items-center py-2">
+                      <Image src={coin.image}  width={32} height={32} alt="coin image" className="mr-2"/>
+                      <span className="ml-2 mr-1">{coin.name}</span>
                       <span className="uppercase">
                         ({coin.symbol?.toUpperCase()})
                       </span>
