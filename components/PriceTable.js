@@ -28,7 +28,6 @@ export default function PriceTable() {
 
   const visible = onlyFav ? data.filter(c => favoritesSet.has(c.id)) : data;
 
-
   return (
     <div className="my-5 overflow-x-auto flex justify-center align-middle">
       <table className="bg-[#D9D9D9] dark:bg-[#262626] w-5xl table-auto border-separate text-left border-spacing-y-3">
@@ -42,7 +41,11 @@ export default function PriceTable() {
 
         <thead className="">
           <tr className="">
-            <th scope="col" className="px-4">Name</th>
+            <th scope="col" className="">
+              <div className="flex ml-18">
+                <p>Name</p>
+              </div>
+            </th>
             <th scope="col" className="px-4 py-2 text-right">Price</th>
             <th scope="col" className="px-4 py-2 text-right">24H%</th>
             <th scope="col" className="px-4 py-2 text-right"></th>
@@ -66,8 +69,8 @@ export default function PriceTable() {
                     className=""
                   >
                     <div className="flex items-center py-2">
-                      <Image src={coin.image}  width={32} height={32} alt="coin image" className="mr-2"/>
-                      <span className="ml-2 mr-1">{coin.name}</span>
+                      <Image src={coin.image}  width={32} height={32} alt="coin image" className="mx-3"/>
+                      <span className="mr-1">{coin.name}</span>
                       <span className="uppercase">
                         ({coin.symbol?.toUpperCase()})
                       </span>
