@@ -1,80 +1,103 @@
-import { LineSeries, createChart, ColorType, CrosshairMode } from 'lightweight-charts';
-import React, { useEffect, useRef } from 'react';
-import { useTheme } from 'next-themes';
+"use client";
 
-export default function CoinChart(props) {
-    const { resolvedTheme, setTheme } = useTheme();
+import React, { useEffect, useRef, useState } from "react";
+import { createChart, ColorType, LineSeries } from "lightweight-charts";
+import { useTheme } from "next-themes";
 
-    const isDark = resolvedTheme === "Dark";
+function readVars() {
+  const css = getComputedStyle(document.documentElement);
+  return {
+    bg: css.getPropertyValue("--background").trim(),
+    text: css.getPropertyValue("--foreground").trim(),
+    accent: css.getPropertyValue("--accentColor").trim(),
+  };
+}
 
-    const {
-        data,
-        colors: {
-            backgroundColor = '#ededed',
-            lineColor = '#2962FF',
-            textColor = 'black',
-            areaTopColor = '#2962FF',
-            areaBottomColor = 'rgba(41, 98, 255, 0.28)',
-        } = {},
-    } = props;
+export default function CoinChart({data}) {
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-    const chartContainerRef = useRef();
+  const containerRef = useRef(null);
+  const chartRef = useRef(null);
+  const seriesRef = useRef(null);
+  const resizeObserverRef = useRef(null);
 
-    useEffect(
-        () => {
-            const handleResize = () => {
-                chart.applyOptions({ width: chartContainerRef.current.clientWidth });
-            };
+  useEffect(() => setMounted(true), []);
 
-            const chart = createChart(chartContainerRef.current, {
-                layout: {
-                    background: { type: ColorType.Solid, color: isDark ? "#121212" : "#ededed"},
-                    textColor,
-                },
-                width: chartContainerRef.current.clientWidth,
-                height: 300,
-                grid: {
-                    vertLines: {visible: false },
-                    horzLines: {visible: false },
-                },
-                watermark: {
-                    visible: false,
-                },
-                rightPriceScale: {
-                    borderVisible: false,
-                    scaleMargins: { top: 0.1, bottom: 0.2 },
-                    mode: 0, // 0=Normal, 1=Logarithmic, 2=Percentage, 3=IndexedTo100
-                },
-                timeScale: {
-                    rightOffset: 5,
-                    barSpacing: 6,
-                    fixLeftEdge: true,
-                    lockVisibleTimeRangeOnResize: true,
-                    borderVisible: false,
-                    timeVisible: false,
-                    secondsVisible: false,
-                },
-            });
-            chart.timeScale().fitContent();
+  // Initial chart creation
+  useEffect(() => {
+    if (!mounted || !containerRef.current || chartRef.current) return;
 
-            const newSeries = chart.addSeries(LineSeries, { lineColor });
-            newSeries.setData(data);
+    const container = containerRef.current;
 
-            window.addEventListener('resize', handleResize);
+    const { bg, text, accent } = readVars();
 
-            return () => {
-                window.removeEventListener('resize', handleResize);
+    const chart = createChart(container, {
+      width: container.clientWidth,
+      height: 360,
+      layout: {
+        background: { type: ColorType.Solid, color: bg},
+        textColor: text,
+      },
+      grid: {
+        vertLines: { visible: false },
+        horzLines: { visible: false },
+      },
+    });
 
-                chart.remove();
-            };
+    const series = chart.addSeries(LineSeries, {
+      color: accent,
+      lineWidth: 2,
+      priceLineVisible: false,
+    });
+
+    series.setData(data);
+
+    chart.timeScale().fitContent();
+
+    const ro = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.contentRect.width > 0) {
+          chart.applyOptions({ width: Math.floor(entry.contentRect.width) });
+        }
+      }
+    });
+    ro.observe(container);
+
+    chartRef.current = chart;
+    seriesRef.current = series;
+    resizeObserverRef.current = ro;
+
+    return () => {
+      ro.disconnect();
+      chart.remove();
+      chartRef.current = null;
+      seriesRef.current = null;
+    };
+  }, [mounted, data]);
+
+  useEffect(() => {
+    if (!mounted || !chartRef.current || !seriesRef.current) return;
+
+    let raf = requestAnimationFrame(() => {
+      const { bg, text, accent } = readVars();
+      chartRef.current.applyOptions({
+        layout: {
+          background: { type: ColorType.Solid, color: bg },
+          textColor: text,
         },
-        [data, backgroundColor, lineColor, textColor, areaTopColor, areaBottomColor]
-    );
+      });
+      seriesRef.current.applyOptions({ color: accent });
+    });
 
-    return (
-        <div
-            ref={chartContainerRef}
-            className='max-w-xl min-w-xl'
-        />
-    );
-};
+    return () => cancelAnimationFrame(raf);
+  }, [resolvedTheme, mounted]);
+
+  return (
+    <div 
+        ref={containerRef} 
+        className="w-xl" 
+        style={{ height: 360 }} 
+    />
+  );
+}

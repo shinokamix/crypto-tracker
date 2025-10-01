@@ -5,6 +5,9 @@
 :root { 
   --background:#ededed; 
   --foreground:#121212;
+
+  --accentColor: #FFB900;
+  --tableColor: #D9D9D9;
 }
 
 @theme inline {
@@ -18,17 +21,26 @@
   :root { 
     --background:#121212; 
     --foreground:#ededed; 
+
+    --accentColor: #8D5BFF;
+    --tableColor: #262626;
   }
 }
 
 html.dark { 
   --background:#121212; 
   --foreground:#ededed; 
+
+  --accentColor: #8D5BFF;
+  --tableColor: #262626;
 }
 
 html.light { 
   --background:#ededed; 
   --foreground:#121212; 
+
+  --accentColor: #FFB900;
+  --tableColor: #D9D9D9;
 }
 
 html {

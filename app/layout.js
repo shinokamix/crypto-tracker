@@ -24,10 +24,26 @@ const Body = localFont({
   display: "swap",
 });
 
+
 export const metadata = {
-  title: "Crypto Prices",
+  title: "Traceum",
   description: "Crypto Prices",
+  icons: {
+    icon: [
+      { url: "/favicon_white.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
+      { url: "/favicon.svg",       type: "image/svg+xml", media: "(prefers-color-scheme: light)"  },
+      { url: "/favicon.ico",       type: "image/x-icon" },
+    ],
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+  },
+
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)",  color: "#0a0a0a" },
+  ],
 };
+
 
 export default function RootLayout({ children }) {
   return (

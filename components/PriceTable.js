@@ -15,6 +15,7 @@ import format from "@/app/misc/format";
 
 export default function PriceTable() {
   const { data, error, isLoading } = useSWR("/api/markets", fetcher);
+  
 
   const favoritesId = useFavorites(s => s.ids);
   const favoritesSet = new Set(favoritesId);
@@ -30,7 +31,7 @@ export default function PriceTable() {
 
   return (
     <div className="my-5 overflow-x-auto flex justify-center align-middle">
-      <table className="bg-[#D9D9D9] dark:bg-[#262626] w-5xl table-auto border-separate text-left border-spacing-y-3">
+      <table className="bg-[var(--tableColor)] w-5xl table-auto border-separate text-left border-spacing-y-3">
 
         <colgroup>
           <col className="w-[65%]" />
@@ -62,7 +63,7 @@ export default function PriceTable() {
           {visible.map((coin) => {
 
             return (
-              <tr key={coin.id} className="bg-[var(--background)] dark:bg-[var(--bg-foreground] hover:bg-amber-400 dark:hover:bg-[#8D5BFF] transform-all duration-300 max-h-2 hover:scale-101 transform-gpu">
+              <tr key={coin.id} className="bg-[var(--background)] hover:bg-[var(--accentColor)] transform-all duration-300 max-h-2 hover:scale-101 transform-gpu">
                 <td className="px-4">
                   <Link
                     href={`/coin/${coin.id}`}
