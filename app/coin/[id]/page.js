@@ -6,6 +6,7 @@ import format from "@/app/misc/format";
 
 import CoinChart from "@/components/CoinChart";
 import ThemeToggle from "@/components/ThemeToggle";
+import ScrumbleText from "@/components/ScrumleText";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import Image from "next/image";
@@ -70,11 +71,11 @@ export default function CoinPage({params}) {
                 </Link>
                 <ThemeToggle />
             </div>
-            <div className="flex mx-80 justify-between">
-                <div>
-                    <h1 className="font-mono text-9xl">
-                        {`${coinData.name}`}
-                    </h1>
+            <div className="flex flex-col mx-80">
+                <div className="">
+                    <ScrumbleText text={coinData.name.length >= 20 ? coinData.symbol : coinData.name}/>
+                </div>
+                <div className="flex justify-between">
                     <div className="mt-10">
                         <p> {"{"} </p>
 
@@ -119,19 +120,15 @@ export default function CoinPage({params}) {
                                         :
                                         <></>
                                     }
-                                    {/* <span className="flex gap-1">
-                                        <p>{`"whitepaper:"`}</p>
-                                        <Link href={whitepaper} alt="whitepaper link" className="hover:underline">{whitepaper}</Link>
-                                    </span> */}
                                 </div>
                             <p>{"}"}</p>
                         </div>
 
                         <p> {"}"} </p>
                     </div>
-                </div>
-                <div className="flex mt-30 border-1">
-                    <CoinChart data={series}/>
+                    <div className="flex border-1 mt-10">
+                        <CoinChart data={series}/>
+                    </div>
                 </div>
             </div>
             <div>

@@ -1,18 +1,24 @@
 "use client";
 
-import Image from "next/image";
-
-import Header from "@/components/Header";
 import PriceTable from "@/components/PriceTable";
+import ScrumbleText from "@/components/ScrumleText";
+import SmoothLayout from "@/components/SmoothLayout";
+import Header from "@/components/Header";
 
 export default function Home() {
+
+
   return (
-    <div className="bg-background font-sans font-semibold">
-      <Header/>
-      <div className="text-center">
-        <h1 className="text-9xl font-mono my-30">Crypto Prices</h1>
-      </div>
-      <PriceTable />
-    </div>
+    <main className="bg-background font-sans font-semibold">
+      <Header />
+      <SmoothLayout>
+        <section className="flex flex-col">
+          <div className="text-center my-30">
+            <ScrumbleText text={"Crypto Prices"}/>
+          </div>
+          <PriceTable />
+        </section>
+      </SmoothLayout>
+    </main>
   );
 }

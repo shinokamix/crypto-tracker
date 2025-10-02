@@ -37,12 +37,8 @@ export const metadata = {
     apple: "/apple-touch-icon.png",
     shortcut: "/favicon.ico",
   },
-
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)",  color: "#0a0a0a" },
-  ],
 };
+
 
 
 export default function RootLayout({ children }) {
@@ -51,7 +47,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${Body.variable} ${Heading.variable} antialiased min-h-screen bg-background text-foreground`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>{children}</ThemeProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {children}
+        </ThemeProvider>
       </body>
     </html>
   );

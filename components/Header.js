@@ -3,11 +3,11 @@ import ThemeToggle from "./ThemeToggle"
 
 export default function Header() {
     return (
-        <div className="flex p-5 fixed top-0 right-0">
-            <div className="ml-auto">
+        <header className="flex">
+            <div className="ml-auto fixed p-5 top-0 right-0 z-50">
                 <FavoritesToggle />
                 <ThemeToggle />
             </div>
-        </div>
+        </header>
     )
 }
