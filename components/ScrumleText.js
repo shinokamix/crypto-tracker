@@ -5,7 +5,7 @@ import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
 gsap.registerPlugin(ScrambleTextPlugin);
 
-export default function ScrumbleText({text}) {
+export default function ScrumbleText({text, className}) {
     const textRef = useRef(null);
 
     useEffect(() => {
@@ -22,16 +22,18 @@ export default function ScrumbleText({text}) {
     }, []);
 
     return (
-        <div className="relative inline-block">
-            <p className="invisible text-9xl font-mono whitespace-pre">
-                AAAAAAAAAAAAAAAAAAAA
-            </p>
+        <div className={`flex ${className}`}>
+            <div className="relative inline-block">
+                <p className="invisible text-9xl font-mono whitespace-pre">
+                    AAAAAAAAAAAAAAAAAAAA
+                </p>
 
-            <p
-                ref={textRef}
-                className="absolute inset-0 text-9xl font-mono"
-            >
-            </p>
+                <p
+                    ref={textRef}
+                    className="absolute inset-0 text-9xl font-mono"
+                >
+                </p>
+            </div>
         </div>
     )
 }

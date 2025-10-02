@@ -14,7 +14,7 @@ export default function Home() {
       <SmoothLayout>
         <section className="flex flex-col">
           <div className="text-center my-30">
-            <ScrumbleText text={"Crypto Prices"}/>
+            <ScrumbleText text={"Crypto Prices"} className={"justify-center"}/>
           </div>
           <PriceTable />
         </section>
