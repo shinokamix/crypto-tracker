@@ -32,10 +32,8 @@ export const metadata = {
     icon: [
       { url: "/favicon_white.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
       { url: "/favicon.svg",       type: "image/svg+xml", media: "(prefers-color-scheme: light)"  },
-      { url: "/favicon.ico",       type: "image/x-icon" },
     ],
-    apple: "/apple-touch-icon.png",
-    shortcut: "/favicon.ico",
+    apple: "/favicon.png",
   },
 };
 
