@@ -2,7 +2,6 @@
 
 import { useFavorites } from "@/app/state/favorites";
 import Image from "next/image";
-import { useTheme } from "next-themes";
 
 import favoritesAdded from "../public/favoritesAdded.svg"
 import favoritesAdd from "../public/favoritesAdd.svg"
@@ -33,16 +32,12 @@ export default function FavoriteButton({ id }) {
   const active = useFavorites(s => s.ids.includes(id));
   const toggle = useFavorites(s => s.toggle);
 
-  const { resolvedTheme, setTheme } = useTheme();
-
-  const isDark = resolvedTheme === "Dark";
-
   return (
     <button
       onClick={() => toggle(id)}
       aria-pressed={active}
       title={active ? "В избранном" : "Добавить в избранное"}
-      className={`px-2 text-xl ml-auto cursor-pointer transition-all duration-300 hover:scale-110`}
+      className={`px-2 cursor-pointer transition-all duration-300 hover:scale-110`}
     >
       {active ? <Added /> : <Add />}
     </button>
