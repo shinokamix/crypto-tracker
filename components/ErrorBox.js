@@ -8,7 +8,7 @@ export default function PriceTableErrorBox({error}) {
             </div>
             <div className="mx-auto">
                 <p className="text-2xl text-left">
-                    {`Error info: ${error.info.error}`}
+                    {`Error info: ${error?.info?.error}`}
                 </p>
                 <p className="text-2xl text-left">
                     Check console for more.

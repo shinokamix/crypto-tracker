@@ -7,7 +7,7 @@ import { useUI } from "@/app/state/ui";
 import { useFavorites } from "@/app/state/favorites";
 import ScrumbleText from "./ScrumleText";
 import PriceTableSceleton from "./PriceTableSceleton";
-import PriceTableErrorBox from "./PriceTableErrorBox";
+import ErrorBox from "./ErrorBox";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -31,7 +31,7 @@ export default function PriceTable() {
   if (isLoading) return <PriceTableSceleton />
   if (error) {
     console.log(error)
-    return <PriceTableErrorBox error={error}/>
+    return <ErrorBox error={error}/>
   }
 
   const visible = onlyFav ? data.filter(c => favoritesSet.has(c.id)) : data;
