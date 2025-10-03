@@ -4,6 +4,7 @@ import ScrumbleText from "./ScrumleText"
 import Link from "next/link"
 import CoinChart from "./CoinChart"
 import ErrorBox from "./ErrorBox"
+import CoinPageSceleton from "./CoinPageSceleton"
 
 import useSWR from "swr";
 import { use } from "react";
@@ -37,7 +38,7 @@ export default function CoinPage({params}) {
         }
     );
 
-    if (coinLoading || marketLoading) return <p>Загрузка...</p>;
+    if (coinLoading || marketLoading) return <CoinPageSceleton />
     if (coinError || marketError) {
         return <ErrorBox error={coinError || marketError}/>
     }
