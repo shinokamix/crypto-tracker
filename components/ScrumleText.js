@@ -9,16 +9,16 @@ export default function ScrumbleText({text, className}) {
     const textRef = useRef(null);
 
     useEffect(() => {
-    // Анимация при загрузке
-    gsap.to(textRef.current, {
-        duration: 2,
-        scrambleText: {
-        text: text,
-        chars: "XOX0",
-        revealDelay: 0.3,
-        speed: 0.4,
-        },
-    });
+        // Анимация при загрузке
+        gsap.to(textRef.current, {
+            duration: 2,
+            scrambleText: {
+            text: text,
+            chars: "XOX0",
+            revealDelay: 0.3,
+            speed: 0.4,
+            },
+        });
     }, []);
 
     return (

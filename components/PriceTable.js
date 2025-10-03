@@ -7,6 +7,7 @@ import { useUI } from "@/app/state/ui";
 import { useFavorites } from "@/app/state/favorites";
 import ScrumbleText from "./ScrumleText";
 import PriceTableSceleton from "./PriceTableSceleton";
+import PriceTableErrorBox from "./PriceTableErrorBox";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -30,7 +31,7 @@ export default function PriceTable() {
   if (isLoading) return <PriceTableSceleton />
   if (error) {
     console.log(error)
-    return <p>ошибка</p>
+    return <PriceTableErrorBox error={error}/>
   }
 
   const visible = onlyFav ? data.filter(c => favoritesSet.has(c.id)) : data;
@@ -50,7 +51,7 @@ export default function PriceTable() {
             <col className="w-[10%]" />
           </colgroup>
 
-          <thead className="">
+          <thead className="h-16">
             <tr className="h-9">
               <th scope="col" className="">
                 <div className="flex ml-18">
@@ -80,7 +81,7 @@ export default function PriceTable() {
                       className=""
                     >
                       <div className="flex items-center py-2">
-                        <Image src={coin.image}  width={32} height={32} alt="coin image" className="mx-3"/>
+                        <Image src={coin.image}  width={32} height={32} alt="coin image" className="mx-3 w-auto h-auto"/>
                         <span className="mr-1">{coin.name}</span>
                         <span className="uppercase">
                           ({coin.symbol?.toUpperCase()})

@@ -32,7 +32,7 @@ export default function PriceTableSceleton() {
             <col className="w-[10%]" />
           </colgroup>
 
-          <thead className="">
+          <thead className="h-16">
             <tr className="h-9">
               <th scope="col" className=""></th>
               <th scope="col" className="px-4 py-2"></th>
