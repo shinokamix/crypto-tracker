@@ -1,10 +1,11 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import useSWR from "swr";
-
-import FavoriteButton from "./FavoriteButton";
 import { useUI } from "@/app/state/ui";
 import { useFavorites } from "@/app/state/favorites";
+
+import FavoriteButton from "./FavoriteButton";
 import ScrumbleText from "./ScrumleText";
 import PriceTableSceleton from "./PriceTableSceleton";
 import ErrorBox from "./ErrorBox";
@@ -22,7 +23,9 @@ export default function PriceTable() {
     revalidateOnFocus: false,
     revalidateOnReconnect: false
   });
-  
+
+  const [mounted, setMounted] = useState(false);  
+  useEffect(() => setMounted(true), []);
 
   const favoritesId = useFavorites(s => s.ids);
   const favoritesSet = new Set(favoritesId);
@@ -35,6 +38,11 @@ export default function PriceTable() {
   }
 
   const visible = onlyFav ? data.filter(c => favoritesSet.has(c.id)) : data;
+
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div>
