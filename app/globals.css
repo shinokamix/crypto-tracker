@@ -8,6 +8,8 @@
 
   --accentColor: #FFB900;
   --tableColor: #D9D9D9;
+
+  overflow-x: hidden;
 }
 
 @theme inline {
