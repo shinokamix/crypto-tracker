@@ -6,12 +6,18 @@ import FavoritesNotActive from "../public/FavoritesNotActive.svg"
 import FavoritesNotActiveDark from "../public/FavoritesNotActiveDark.svg"
 import FavoritesActive from "../public/FavoritesActive.svg"
 import FavoritesActiveDark from "../public/FavoritesActiveDark.svg"
+import { useRef } from "react";
+
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+gsap.registerPlugin(useGSAP);
 
 function Active() {
   return (
     <>
-      <Image src={FavoritesActive} alt="" height={32} width={32} className="block dark:hidden"/>
-      <Image src={FavoritesActiveDark} alt="" height={32} width={32} className="hidden dark:block"/>
+      <Image src={FavoritesActive} alt="" height={32} width={32} className="active block dark:hidden"/>
+      <Image src={FavoritesActiveDark} alt="" height={32} width={32} className="active hidden dark:block"/>
     </>
   )
 }
@@ -29,10 +35,30 @@ export default function FavoritesToggle() {
   const onlyFav = useUI(s => s.onlyFav);
   const toggleOnlyFav = useUI(s => s.toggleOnlyFav);
 
+  const buttonRef = useRef(null);
+
+  useGSAP(
+    () => {
+      if (onlyFav) {
+            // анимируем ТОЛЬКО активную иконку внутри кнопки
+        const t = gsap.to(".active", {
+          scale: 1.1,
+          duration: 0.3,
+          ease: "power1.inOut",
+          yoyo: true,
+          repeat: -1,
+        });
+
+      return () => t.kill();
+      }
+    }, {scope: buttonRef, dependencies: [onlyFav]}
+  );
+
   return (
     <button
     onClick={toggleOnlyFav}
-    className="m-3 cursor-pointer transition-all duration-300 hover:scale-110"
+    className="m-3 cursor-pointer transform-all duration-300 hover:scale-110"
+    ref={buttonRef}
     >
       {onlyFav ? <Active /> : <NotActive />}
     </button>

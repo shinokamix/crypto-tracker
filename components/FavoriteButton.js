@@ -8,7 +8,10 @@ import favoritesAdd from "../public/favoritesAdd.svg"
 import favoritesAddedDark from "../public/favoritesAddedDark.svg"
 import favoritesAddDark from "../public/favoritesAddDark.svg"
 
-
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+gsap.registerPlugin(useGSAP)
+import { useRef } from "react";
 
 function Added() {
   return (
@@ -32,12 +35,28 @@ export default function FavoriteButton({ id }) {
   const active = useFavorites(s => s.ids.includes(id));
   const toggle = useFavorites(s => s.toggle);
 
+  const buttonRef = useRef(null);
+
+  const handleClick = () => {
+
+    gsap.fromTo(
+      buttonRef.current,
+      { rotation: 0 }, { 
+        rotation: 360, 
+        duration: 0.3,  
+    /*  onComplete: () => toggle(id) */}
+    );
+
+    toggle(id)
+  };
+
   return (
     <button
-      onClick={() => toggle(id)}
+      onClick={handleClick}
       aria-pressed={active}
       title={active ? "В избранном" : "Добавить в избранное"}
-      className={`px-2 cursor-pointer transition-all duration-300 hover:scale-110`}
+      className={`px-2 cursor-pointer`}
+      ref={buttonRef}
     >
       {active ? <Added /> : <Add />}
     </button>

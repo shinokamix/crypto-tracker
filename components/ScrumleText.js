@@ -1,24 +1,25 @@
 "use client";
+
 import { useRef, useLayoutEffect } from "react";
+
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
-gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
+gsap.registerPlugin(useGSAP, ScrollTrigger, ScrambleTextPlugin);
 
 export default function ScrumbleText({ text, className = "", align = "left", delay = 0.1}) {
   const wrapRef = useRef(null);
   const textRef = useRef(null);
 
-  useLayoutEffect(() => {
-    if (typeof window === "undefined") return;
+  useGSAP(
+    () => {
 
-    const ctx = gsap.context(() => {
       const el = textRef.current;
       const wrap = wrapRef.current;
 
       document?.fonts?.ready?.then(() => ScrollTrigger.refresh());
 
-      // стартовая анимация
       gsap.to(el, {
         duration: 1.6,
         ease: "power2.out",
@@ -33,20 +34,19 @@ export default function ScrumbleText({ text, className = "", align = "left", del
           scrambleText: { text, chars: "XOX0", revealDelay: delay, speed: 1 },
         });
 
-      ScrollTrigger.create({
+        ScrollTrigger.create({
         trigger: wrap,
-        start: "top 30%",
-        end: "bottom 20%",
+        start: "top 20%",
+        end: "bottom 30%",
         onEnter: play,
         onEnterBack: play,
         invalidateOnRefresh: true,
         fastScrollEnd: false,
         //markers: true,
       });
-    }, wrapRef);
-
-    return () => ctx.revert();
-  }, [text]);
+    },
+    { scope: wrapRef, dependencies: [text, delay] }
+  )
 
   const textAlign =
     align === "right" ? "text-right" : align === "center" ? "text-center" : "text-left";

@@ -3,8 +3,10 @@
 import PriceTable from "@/components/PriceTable";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Lenis from 'lenis';
-import { useEffect } from "react";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
+
+import ReactLenis from "lenis/react"
+import { useEffect, useRef } from "react";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,34 +14,30 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
 
+  const lenisRef = useRef()
+  
   useEffect(() => {
-    const lenis = new Lenis();
-
-    // Сообщаем ScrollTrigger про каждый скролл Lenis
-    lenis.on("scroll", () => ScrollTrigger.update());
-
-    // Синхронизируем Lenis с таймингом GSAP
-    const gsapTicker = (t) => {
-      // GSAP отдаёт секунды, Lenis ждёт миллисекунды
-      lenis.raf(t * 1000);
-    };
-    gsap.ticker.add(gsapTicker);
-    gsap.ticker.lagSmoothing(0);
-
-    return () => {
-      gsap.ticker.remove(gsapTicker);
-      lenis.destroy();
-    };
-  }, []);
+    function update(time) {
+      lenisRef.current?.lenis?.raf(time * 1000)
+    }
+  
+    gsap.ticker.add(update)
+  
+    return () => gsap.ticker.remove(update)
+  }, [])
 
 
   return (
     <main className="bg-background font-sans font-semibold">
-      <Header />
-      <section className="flex flex-col min-h-screen">
-        <PriceTable />
-      </section>
-      <Footer />
+      <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} >
+        <Header />
+        <section className="flex flex-col min-h-screen">
+          <PriceTable />
+        </section>
+        <ScrollToTopButton />
+        <Footer />
+        <ScrollToTopButton />
+      </ReactLenis >
     </main>
 
   );
