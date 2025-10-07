@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <main className="bg-background font-sans font-semibold">
-      <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} >
+      <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
         <Header />
         <section className="flex flex-col min-h-screen">
           <PriceTable />

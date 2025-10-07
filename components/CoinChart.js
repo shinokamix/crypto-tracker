@@ -98,6 +98,7 @@ export default function CoinChart({data}) {
         ref={containerRef} 
         className="w-xl" 
         style={{ height: 360 }} 
+        data-lenis-prevent-wheel
     />
   );
 }
