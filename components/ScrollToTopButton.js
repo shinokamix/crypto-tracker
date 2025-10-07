@@ -2,19 +2,29 @@
 
 import { useEffect, useState, useCallback } from 'react'
 import { useLenis } from 'lenis/react'
+import Image from 'next/image'
+
+import arrowWhite from "@/public/arrow_white.svg"
+import arrowBlack from "@/public/arrow_black.svg"
+
+function Arrow() {
+  return(
+    <>
+      <Image src={arrowWhite} alt='arrow' width={20} height={20} className='block dark:hidden' />
+      <Image src={arrowBlack} alt='arrow' width={20} height={20} className='hidden dark:block'/>
+    </>
+  )
+}
 
 export default function ScrollToTopButton() {
   const [visible, setVisible] = useState(false)
 
-  // useLenis возвращает сам инстанс lenis,
-  // а также позволяет подписаться на события прокрутки
-  const lenis = useLenis((scroll) => {
-    // показываем кнопку после 300px
-    setVisible(scroll > 50)
+  const lenis = useLenis(( { animatedScroll, limit } ) => {
+    setVisible(animatedScroll > 1000 && (limit - animatedScroll > 800))
   })
 
   const onClick = useCallback(() => {
-    lenis?.scrollTo(0, { duration: 1.2 }) // плавный скролл наверх
+    lenis?.scrollTo(0, { duration: 1.2 })
   }, [lenis])
 
   return (
@@ -22,11 +32,11 @@ export default function ScrollToTopButton() {
         <button
         onClick={onClick}
         aria-label="Прокрутить наверх"
-        className={`fixed bottom-6 right-6 z-50 rounded-full px-4 py-3 shadow-lg transition-opacity
-        ${visible ? 'opacity-100' : 'opacity-0 pointer-events-none'}
-        bg-black text-white`}
+        className={`fixed bottom-10 right-10 z-50 rounded-full p-2.5
+        ${visible ? 'opacity-30' : 'opacity-0 pointer-events-none'}
+        bg-[var(--foreground)] cursor-pointer transition-all duration-300 hover:scale-110 hover:opacity-100`}
         >
-        ↑
+         <Arrow />
         </button>
     </div>
   )

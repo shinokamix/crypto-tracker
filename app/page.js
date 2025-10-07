@@ -34,7 +34,6 @@ export default function Home() {
         <section className="flex flex-col min-h-screen">
           <PriceTable />
         </section>
-        <ScrollToTopButton />
         <Footer />
         <ScrollToTopButton />
       </ReactLenis >

@@ -6,7 +6,9 @@ import FavoritesNotActive from "../public/FavoritesNotActive.svg"
 import FavoritesNotActiveDark from "../public/FavoritesNotActiveDark.svg"
 import FavoritesActive from "../public/FavoritesActive.svg"
 import FavoritesActiveDark from "../public/FavoritesActiveDark.svg"
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+
+import { useLenis } from 'lenis/react'
 
 
 import gsap from "gsap";
@@ -36,6 +38,13 @@ export default function FavoritesToggle() {
   const toggleOnlyFav = useUI(s => s.toggleOnlyFav);
 
   const buttonRef = useRef(null);
+
+  const lenis = useLenis();
+
+  useEffect(() => {
+    lenis?.scrollTo(0, { duration: 1.2 })
+  }, [onlyFav])
+
 
   useGSAP(
     () => {
