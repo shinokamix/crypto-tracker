@@ -43,7 +43,7 @@ export default function FavoritesToggle() {
 
   useEffect(() => {
     lenis?.scrollTo(0, { duration: 1.2 })
-  }, [onlyFav])
+  }, [onlyFav, lenis])
 
 
   useGSAP(

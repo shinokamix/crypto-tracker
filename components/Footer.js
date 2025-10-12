@@ -15,16 +15,14 @@ export default function Footer() {
     }
 
     return (
-        <div 
-            className='relative h-[800px]'
-            style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}
-        >
-            <div className='relative h-[calc(100vh+800px)] -top-[100vh]'>
-                <div className='h-[800px] sticky top-[calc(100vh-800px)] bg-[var(--tableColor)]'>
-                    <Content />
-                </div>
-            </div>
-        </div>
+    <div 
+      className='relative h-[800px] bg-[var(--tableColor)]'
+      style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}
+    >
+      <div className='fixed bottom-0 h-[800px] w-full'>
+        <Content />
+      </div>
+    </div>
   )
 }
 
@@ -32,7 +30,7 @@ export default function Footer() {
 function Content() {
     return (
         <div className="flex flex-col h-full">
-            <section className="my-30 flex flex-col font-mono text-9xl">
+            <section className="my-25 flex flex-col font-mono text-9xl">
                 <ScrumbleText text={"CRYPTO IS FUTURE"} delay={1}/>
                 <ScrumbleText text={"FUTURE IS CRYPTO"} align="right" delay={1}/>
             </section>
@@ -53,7 +51,7 @@ function Content() {
                     </Link>
                 </section>
 
-                <section className="flex flex-col ml-[calc(100vw-50%)] mt-25 text-2xl">
+                <section className="flex flex-col ml-[calc(100vw-50%)] mt-20 text-2xl">
                     <p>
                         Data: CoinGecko (may be updated with delay)
                     </p>

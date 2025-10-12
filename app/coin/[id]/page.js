@@ -10,7 +10,7 @@ export default function Page({params}) {
     return (
         <main className="min-h-screen">
             <ReactLenis root/>
-            <div className="flex flex-col font-sans font-semibold min-h-screen mb-30">
+            <div className="flex flex-col font-sans min-h-screen mb-30">
                 <CoinPageHeader />
                 <CoinPage params={params}/>
             </div>

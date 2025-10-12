@@ -35,15 +35,15 @@ export default function ScrumbleText({ text, className = "", align = "left", del
         });
 
         ScrollTrigger.create({
-        trigger: wrap,
-        start: "top 20%",
-        end: "bottom 30%",
-        onEnter: play,
-        onEnterBack: play,
-        invalidateOnRefresh: true,
-        fastScrollEnd: false,
-        //markers: true,
-      });
+          trigger: wrap,
+          start: "top 20%",
+          end: "bottom 30%",
+          onEnter: play,
+          onEnterBack: play,
+          invalidateOnRefresh: true,
+          fastScrollEnd: false,
+          //markers: true,
+        });
     },
     { scope: wrapRef, dependencies: [text, delay] }
   )
@@ -54,13 +54,13 @@ export default function ScrumbleText({ text, className = "", align = "left", del
   return (
     <div ref={wrapRef} className={`flex w-full ${className}`}>
       <div className="relative inline-block w-full">
-        <p className="invisible text-9xl font-mono whitespace-pre w-full" aria-hidden="true">
+        <p className="invisible md:text-9xl sm:text-6xl font-mono whitespace-normal w-full" aria-hidden="true">
           A
         </p>
 
         <p
           ref={textRef}
-          className={`absolute inset-0 text-9xl font-mono whitespace-pre ${textAlign}`}
+          className={`absolute inset-0 md:text-9xl text-6xl font-mono whitespace-pre font-semibold ${textAlign}`}
         />
       </div>
     </div>

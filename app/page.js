@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 
-import ReactLenis from "lenis/react"
+import { ReactLenis } from "lenis/react"
 import { useEffect, useRef } from "react";
 
 import gsap from "gsap";
@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
 
-  const lenisRef = useRef()
+  const lenisRef = useRef();
   
   useEffect(() => {
     function update(time) {
@@ -27,12 +27,14 @@ export default function Home() {
   }, [])
 
 
+
   return (
-    <main className="bg-background font-sans font-semibold">
+    <main className="bg-background font-sans sm:text-[1rem] text-[0.75rem]">
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
         <Header />
-        <section className="flex flex-col min-h-screen">
+        <section className="flex flex-col min-h-screen w-full">
           <PriceTable />
+          <div className="h-10 "/>
         </section>
         <Footer />
         <ScrollToTopButton />

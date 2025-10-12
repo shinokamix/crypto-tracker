@@ -49,8 +49,8 @@ export default function CoinPage({params}) {
 
     const price = format(coinData.market_data.current_price.usd);
     const market_cap = format(coinData.market_data.market_cap.usd);
-    const price_change_percentage_24h = coinData.market_data.price_change_percentage_24h.toFixed(2);
-    const ath_change_percentage = coinData.market_data.ath_change_percentage.usd.toFixed(2);
+    const price_change_percentage_24h = coinData.market_data.price_change_percentage_24h?.toFixed(2);
+    const ath_change_percentage = coinData.market_data.ath_change_percentage.usd?.toFixed(2);
 
     const homepage = coinData.links.homepage;
     const whitepaper = coinData.links.whitepaper;
@@ -74,7 +74,7 @@ export default function CoinPage({params}) {
                                         {`"price_change_percentage_24h":`}
                                     </p>
                                     <p className={`${price_change_percentage_24h >= 0 ? "text-green-600" : "text-red-600"}`}> 
-                                        {`${price_change_percentage_24h}%`} 
+                                        {price_change_percentage_24h ? `${price_change_percentage_24h}%` : '0.00%'} 
                                     </p>
                                 </span>
                                 <p> {`"market_cap": ${market_cap}`} </p>
