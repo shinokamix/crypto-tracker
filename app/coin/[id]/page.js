@@ -8,9 +8,9 @@ import ReactLenis from 'lenis/react';
 
 export default function Page({params}) {
     return (
-        <main className="min-h-screen">
+        <main className="min-h-screen xl:text-[1rem] text-[0.75rem]">
             <ReactLenis root/>
-            <div className="flex flex-col font-sans min-h-screen mb-30">
+            <div className="flex flex-col font-sans min-h-screen">
                 <CoinPageHeader />
                 <CoinPage params={params}/>
             </div>

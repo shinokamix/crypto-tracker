@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useLayoutEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -52,15 +52,15 @@ export default function ScrumbleText({ text, className = "", align = "left", del
     align === "right" ? "text-right" : align === "center" ? "text-center" : "text-left";
 
   return (
-    <div ref={wrapRef} className={`flex w-full ${className}`}>
+    <div ref={wrapRef} className={`flex w-full xl:text-9xl lg:text-7xl md:text-6xl sm:text-5xl text-3xl ${className}`}>
       <div className="relative inline-block w-full">
-        <p className="invisible md:text-9xl sm:text-6xl font-mono whitespace-normal w-full" aria-hidden="true">
+        <p className="invisible font-mono whitespace-normal w-full" aria-hidden="true">
           A
         </p>
 
         <p
           ref={textRef}
-          className={`absolute inset-0 md:text-9xl text-6xl font-mono whitespace-pre font-semibold ${textAlign}`}
+          className={`absolute inset-0 font-mono whitespace-pre font-semibold ${textAlign}`}
         />
       </div>
     </div>

@@ -5,6 +5,7 @@ import Link from "next/link"
 import CoinChart from "./CoinChart"
 import ErrorBox from "./ErrorBox"
 import CoinPageSceleton from "./CoinPageSceleton"
+import { Chart } from "./Chart"
 
 import useSWR from "swr";
 import { use } from "react";
@@ -44,8 +45,10 @@ export default function CoinPage({params}) {
     }
     const series = marketData.prices.map(([timestamp, price]) => ({
         value: price,
-        time: Math.floor(timestamp / 1000)
+        time: timestamp
     }))
+
+    console.log(series)
 
     const price = format(coinData.market_data.current_price.usd);
     const market_cap = format(coinData.market_data.market_cap.usd);
@@ -57,7 +60,7 @@ export default function CoinPage({params}) {
 
     return (
         <div>
-            <div className="flex flex-col mx-80">
+            <div className="flex flex-col xl:mx-80 lg:mx-20 md:mx-10">
                 <div className="">
                     <ScrumbleText text={coinData.name.length >= 20 ? coinData.symbol : coinData.name}/>
                 </div>
@@ -110,13 +113,13 @@ export default function CoinPage({params}) {
 
                         <p> {"}"} </p>
                     </div>
-                    <div className="flex border-1 mt-10">
-                        <CoinChart data={series}/>
+                    <div className="">
+                        <Chart chartData={series}/>
                     </div>
                 </div>
             </div>
             <div>
-                <p className="mt-20 mx-80">
+                <p className="my-20 xl:mx-80 lg:mx-20 md:mx-10">
                     {coinData.description.en}
                 </p>
             </div>

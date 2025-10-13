@@ -12,6 +12,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+
 export default function Home() {
 
   const lenisRef = useRef();
@@ -19,6 +20,7 @@ export default function Home() {
   useEffect(() => {
     function update(time) {
       lenisRef.current?.lenis?.raf(time * 1000)
+      ScrollTrigger.update();
     }
   
     gsap.ticker.add(update)
@@ -26,18 +28,17 @@ export default function Home() {
     return () => gsap.ticker.remove(update)
   }, [])
 
-
-
   return (
     <main className="bg-background font-sans sm:text-[1rem] text-[0.75rem]">
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef}>
-        <Header />
-        <section className="flex flex-col min-h-screen w-full">
-          <PriceTable />
-          <div className="h-10 "/>
-        </section>
+        <div className="lg:m-0 mx-5">
+          <Header />
+          <section className="flex flex-col min-h-screen w-full">
+            <PriceTable />
+          </section>
+          <ScrollToTopButton />
+        </div>
         <Footer />
-        <ScrollToTopButton />
       </ReactLenis >
     </main>
 

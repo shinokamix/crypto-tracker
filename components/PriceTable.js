@@ -237,8 +237,8 @@ export default function PriceTable() {
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    refreshScroll();
-  }, [onlyFav, visible?.length]);
+    refreshScroll()
+  }, [onlyFav, visible.length, sorting, pageIndex, pageSize])
 
   if (isLoading) return <PriceTableSceleton />
   if (error) {
@@ -255,14 +255,14 @@ export default function PriceTable() {
       <Heading />
 
       <div className="w-full">
-        <Table className={"mx-auto lg:w-5xl w-full font-sans"}>
+        <Table className={"lg:mx-auto lg:w-5xl w-full font-sans sm:text-[1rem] text-[0.75rem]"}>
 
           <colgroup>
-            <col className="xl:w-[4%] md:w-[5%] sm:w-[6%] w-[10%]"></col>
+            <col className="xl:w-[4%] md:w-[6%] sm:w-[6%] w-[10%]"></col>
             <col className="xl:w-auto md:w-auto sm:w-auto w-auto"></col>
             <col className="xl:w-[15%] md:w-[15%] sm:w-[15%] w-[25%]"></col>
-            <col className="xl:w-[7%] md:w-[8%] sm:w-[10%] w-[12%]"></col>
-            <col className="xl:w-[5%] md:w-[5%] sm:w-[7%] w-[10%]"></col>
+            <col className="xl:w-[7%] md:w-[9%] sm:w-[10%] w-[12%]"></col>
+            <col className="xl:w-[5%] md:w-[6%] sm:w-[7%] w-[10%]"></col>
           </colgroup>
 
           <TableHeader>
@@ -342,7 +342,7 @@ export default function PriceTable() {
 function Heading() {
   return(
     <div className="my-30">
-      <ScrumbleText text={"Crypto Prices"} align="center"/>
+      <ScrumbleText text={"Crypto Prices"} align="center" className="xl:text-9xl lg:text-9xl md:text-8xl text-4xl"/>
     </div>
   )
 }

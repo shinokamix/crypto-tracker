@@ -20,7 +20,7 @@ export default function ScrollToTopButton() {
   const [visible, setVisible] = useState(false)
 
   const lenis = useLenis(( { animatedScroll, limit } ) => {
-    setVisible(animatedScroll > 1000 && (limit - animatedScroll > 800))
+    setVisible(animatedScroll > 1000 && (limit - animatedScroll > 700))
   })
 
   const onClick = useCallback(() => {
@@ -32,7 +32,7 @@ export default function ScrollToTopButton() {
         <button
         onClick={onClick}
         aria-label="Прокрутить наверх"
-        className={`fixed bottom-10 right-10 z-50 rounded-full p-2.5
+        className={`fixed bottom-6 right-10 z-50 rounded-full p-2.5
         ${visible ? 'opacity-30' : 'opacity-0 pointer-events-none'}
         bg-[var(--foreground)] cursor-pointer transition-all duration-300 hover:scale-110 hover:opacity-100`}
         >
