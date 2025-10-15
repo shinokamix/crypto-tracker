@@ -18,16 +18,16 @@ A **Next.js** application for tracking cryptocurrency prices using the **CoinGec
 
 ### Tech Stack
 
-| Category                | Tools                                                          |
-| ----------------------- | -------------------------------------------------------------- |
-| **Framework**           | Next.js 15, React 19                                           |
-| **Styling**             | Tailwind CSS 4                                                 |
-| **UI Library**          | shadcn/ui                                                      |
-| **State Management**    | Zustand                                                        |
-| **Data Layer**          | SWR, CoinGecko API                                             |
-| **Charts & Tables**     | Recharts, TanStack React Table                                 |
-| **Animation**           | GSAP, Lenis, @gsap/react                                       |
-| **Linting / Dev Tools** | ESLint 9, Tailwind PostCSS, tw-animate-css                     |
+| Category             | Tools                                                                 |
+| -------------------- | -------------------------------------------------------------------- |
+| **Framework**         | [Next.js](https://github.com/vercel/next.js), [React](https://github.com/facebook/react) |
+| **Styling**           | [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)          |
+| **UI Library**        | [shadcn/ui](https://github.com/shadcn/ui)                            |
+| **State Management**  | [Zustand](https://github.com/pmndrs/zustand)                         |
+| **Data Layer**        | [SWR](https://github.com/vercel/swr), [CoinGecko API](https://www.coingecko.com/en/api) |
+| **Charts & Tables**   | [Recharts](https://github.com/recharts/recharts), [TanStack React Table](https://github.com/TanStack/table) |
+| **Animation**         | [GSAP](https://github.com/greensock/GSAP), [Lenis](https://github.com/studio-freight/lenis) |
+
 
 
 ## 🛠 Installation
