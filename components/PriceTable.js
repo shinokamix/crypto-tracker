@@ -342,7 +342,7 @@ export default function PriceTable() {
 function Heading() {
   return(
     <div className="my-30">
-      <ScrumbleText text={"Crypto Prices"} align="center" className="xl:text-9xl lg:text-9xl md:text-8xl text-4xl"/>
+      <ScrumbleText text={"Crypto Prices"} align="center" className="xl:text-9xl lg:text-8xl md:text-7xl text-3xl"/>
     </div>
   )
 }

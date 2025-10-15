@@ -10,8 +10,8 @@ import arrowBlack from "@/public/arrow_black.svg"
 function Arrow() {
   return(
     <>
-      <Image src={arrowWhite} alt='arrow' width={20} height={20} className='block dark:hidden' />
-      <Image src={arrowBlack} alt='arrow' width={20} height={20} className='hidden dark:block'/>
+      <Image src={arrowWhite} alt='arrow' width={20} height={20} className='block dark:hidden sm:h-5 h-3 sm:w-5 w-3' />
+      <Image src={arrowBlack} alt='arrow' width={20} height={20} className='hidden dark:block sm:h-5 h-3 sm:w-5 w-3'/>
     </>
   )
 }

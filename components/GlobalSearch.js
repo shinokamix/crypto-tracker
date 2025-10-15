@@ -30,9 +30,8 @@ export default function GlobalSearch() {
       `fixed bottom-6 left-1/2 -translate-x-1/2 z-50 
       ${visible ? 'opacity-70' : 'opacity-0 pointer-events-none'} 
       transition-all duration-300
-      border-2 border-[var(--tableColor)] focus:ring
       `}>
-      <div className="bg-[var(--tableColor)]  px-3 py-2 flex items-center w-[250px]">
+      <div className="bg-[var(--tableColor)]  px-3 py-2 flex items-center sm:w-[250px] w-[150px]">
         <input
           type="text"
           value={value}

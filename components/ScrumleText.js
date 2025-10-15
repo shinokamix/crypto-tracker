@@ -52,7 +52,7 @@ export default function ScrumbleText({ text, className = "", align = "left", del
     align === "right" ? "text-right" : align === "center" ? "text-center" : "text-left";
 
   return (
-    <div ref={wrapRef} className={`flex w-full xl:text-9xl lg:text-7xl md:text-6xl sm:text-5xl text-3xl ${className}`}>
+    <div ref={wrapRef} className={`flex w-full xl:text-9xl lg:text-7xl md:text-6xl sm:text-5xl text-2xl ${className}`}>
       <div className="relative inline-block w-full">
         <p className="invisible font-mono whitespace-normal w-full" aria-hidden="true">
           A

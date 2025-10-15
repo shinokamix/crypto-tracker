@@ -16,8 +16,8 @@ import { useRef } from "react";
 function Added() {
   return (
     <>
-      <Image src={favoritesAdded} alt="Added" width={18} height={18} className="block dark:hidden hover:scale-110 transition-all duration-300 sm:h-4 sm:w-4 w-3 h-3"/>
-      <Image src={favoritesAddedDark} alt="Added" width={18} height={18} className="hidden dark:block hover:scale-110 transition-all duration-300 sm:h-4 sm:w-4 w-3 h-3"/>
+      <Image src={favoritesAdded} alt="Added" width={16} height={16} className="block dark:hidden hover:scale-110 transition-all duration-300"/>
+      <Image src={favoritesAddedDark} alt="Added" width={16} height={16} className="hidden dark:block hover:scale-110 transition-all duration-300"/>
     </>
   )
 }
@@ -25,8 +25,8 @@ function Added() {
 function Add() {
   return (
     <>
-      <Image src={favoritesAdd} alt="Added" width={18} height={18} className="block dark:hidden hover:scale-110 transition-all duration-300 sm:h-4 sm:w-4 w-3 h-2"/>
-      <Image src={favoritesAddDark} alt="Added" width={18} height={18} className="hidden dark:block hover:scale-110 transition-all duration-300 sm:h-4 sm:w-4 w-3 h-3"/>
+      <Image src={favoritesAdd} alt="Added" width={16} height={16} className="block dark:hidden hover:scale-110 transition-all duration-300"/>
+      <Image src={favoritesAddDark} alt="Added" width={16} height={16} className="hidden dark:block hover:scale-110 transition-all duration-300"/>
     </>
   )
 }

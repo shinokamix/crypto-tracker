@@ -19,7 +19,7 @@ export default function PriceTableSceleton() {
 
   return (
     <div>
-      <div className="my-30 h-32 bg-[var(--tableColor)] w-5xl mx-auto">
+      <div className="my-30 h-32 bg-[var(--tableColor)] lg:w-5xl mx-auto">
 
       </div>
       <div className="animate-pulse flex justify-center">
