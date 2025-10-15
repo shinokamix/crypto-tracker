@@ -2,7 +2,7 @@
 
 A **Next.js** application for tracking cryptocurrency prices using the **CoinGecko API**.
 
-![App Demo](./public/demo.gif)
+![App Demo](./public/demo1.gif)
 
 ### Features
 
