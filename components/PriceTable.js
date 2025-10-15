@@ -198,7 +198,7 @@ export default function PriceTable() {
         id: "favorite",
         header: "", // можно иконку
         cell: ({ row }) => (
-          <div className="flex justify-center w-full h-full">
+          <div className="flex justify-center ">
             <FavoriteButton id={row.original.id} />
           </div>
         ),

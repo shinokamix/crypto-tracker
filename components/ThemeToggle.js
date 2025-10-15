@@ -11,13 +11,13 @@ import gsap from "gsap";
 
 function Light() {
   return (
-    <Image  src={LightToggle} alt="" height={32} width={32} className="transform-all duration-300 hover:scale-110"/>
+    <Image  src={LightToggle} alt="" height={32} width={32} className="transform-all duration-300 hover:scale-110 sm:h-8 sm:w-8 w-5 h-5"/>
   )
 }
 
 function Dark() {
   return (
-    <Image  src={DarkToggle} alt="" height={32} width={32} className="transform-all duration-300 hover:scale-110"/>
+    <Image  src={DarkToggle} alt="" height={32} width={32} className="transform-all duration-300 hover:scale-110 sm:h-8 sm:w-8 w-5 h-5"/>
   )
 }
 

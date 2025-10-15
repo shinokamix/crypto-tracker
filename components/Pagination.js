@@ -47,10 +47,8 @@ export default function Pagination({
 
   return (
     <div className={`flex justify-center h-12 ${className}`}>
-      <div className="w-5xl grid grid-cols-[1fr_auto_1fr] items-center bg-[var(--tableColor)] tabular-nums">
-        <div></div>
-
-        <div className="flex justify-center items-center gap-2">
+      <div className="w-5xl flex justify-center items-center bg-[var(--tableColor)] tabular-nums">
+        <div className="flex justify-center items-center sm:gap-2 gap-0.5">
           <button onClick={goFirst} disabled={!canPrev} className="disabled:opacity-50 disabled:pointer-events-none cursor-pointer">
             <Image src={FirstBlack} alt='First Page' width={18} height={18} className='block dark:hidden hover:scale-140 transition-all duration-300'/>
             <Image src={FirstWhite} alt='First Page' width={18} height={18} className='hidden dark:block hover:scale-140 transition-all duration-300'/>
@@ -61,7 +59,7 @@ export default function Pagination({
             <Image src={PreviousWhite} alt='Previous Page' width={18} height={18} className='hidden dark:block hover:scale-140 transition-all duration-300'/>
           </button>
 
-          <span className='text-center w-20'>{pageIndex + 1} of {pageCount}</span>
+          <span className='text-center sm:w-20 w-10'>{pageIndex + 1} of {pageCount}</span>
 
           <button onClick={goNext} disabled={!canNext} className="disabled:opacity-50 disabled:pointer-events-none cursor-pointer">
             <Image src={NextBlack} alt='Next Page' width={18} height={18} className='block dark:hidden hover:scale-140 transition-all duration-300'/>
@@ -73,21 +71,7 @@ export default function Pagination({
             <Image src={LastWhite} alt='Last Page' width={18} height={18} className='hidden dark:block hover:scale-140 transition-all duration-300'/>
           </button>
         </div>
-
-        <div className="flex justify-end mr-2">
-          <Select value={pageSize} onValueChange={onValueChange}>
-            <SelectTrigger className="sm:w-30 w-26 sm:text-[1rem] text-[0.75rem]">
-              <SelectValue placeholder="Show" />
-            </SelectTrigger>
-            <SelectContent position='popper' className={'w-[var(--radix-select-trigger-width)] sm:text-[1rem] text-[0.75rem]'}>
-              <SelectItem value={10} className={'sm:text-[1rem] text-[0.75rem]'}>Show 0</SelectItem>
-              <SelectItem value={25} className={'sm:text-[1rem] text-[0.75rem]'}>Show 25</SelectItem>
-              <SelectItem value={50} className={'sm:text-[1rem] text-[0.75rem]'}>Show 50</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
       </div>
-
     </div>
   );
 }

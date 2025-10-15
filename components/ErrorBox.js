@@ -2,7 +2,7 @@ import ScrumbleText from "./ScrumleText"
 
 export default function PriceTableErrorBox({error}) {
     return (
-        <div className="flex flex-col mx-auto">
+        <div className="flex flex-col">
             <div className="text-center my-30 h-32">
                 <ScrumbleText text={`Error ${error?.status}`} className={"justify-center"}/>
             </div>

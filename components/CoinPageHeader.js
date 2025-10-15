@@ -24,7 +24,7 @@ export default function CoinPageHeader() {
         <div className="flex justify-between p-5">
             <Link href={"/"} className="m-3 cursor-pointer transition-all duration-300 hover:scale-110">
                 {mounted ?
-                    <Image src={isDark ? return_light : return_dark} alt="return" height={32} width={32}/> : <div className="w-8 h-8" />}
+                    <Image src={isDark ? return_light : return_dark} alt="return" height={32} width={32} className="sm:h-8 sm:w-8 w-5 h-5"/> : <div className="sm:h-8 sm:w-8 w-5 h-5" />}
             </Link>
             <ThemeToggle />
         </div>

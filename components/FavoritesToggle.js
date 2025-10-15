@@ -18,8 +18,8 @@ gsap.registerPlugin(useGSAP);
 function Active() {
   return (
     <>
-      <Image src={FavoritesActive} alt="" height={32} width={32} className="active block dark:hidden"/>
-      <Image src={FavoritesActiveDark} alt="" height={32} width={32} className="active hidden dark:block"/>
+      <Image src={FavoritesActive} alt="" height={32} width={32} className="active block dark:hidden sm:h-8 sm:w-8 w-5 h-5"/>
+      <Image src={FavoritesActiveDark} alt="" height={32} width={32} className="active hidden dark:block sm:h-8 sm:w-8 w-5 h-5"/>
     </>
   )
 }
@@ -27,8 +27,8 @@ function Active() {
 function NotActive() {
   return (
     <>
-      <Image src={FavoritesNotActive} alt="" height={32} width={32} className="block dark:hidden"/>
-      <Image src={FavoritesNotActiveDark} alt="" height={32} width={32} className="hidden dark:block"/>
+      <Image src={FavoritesNotActive} alt="" height={32} width={32} className="block dark:hidden sm:h-8 sm:w-8 w-5 h-5"/>
+      <Image src={FavoritesNotActiveDark} alt="" height={32} width={32} className="hidden dark:block sm:h-8 sm:w-8 w-5 h-5"/>
     </>
   )
 }

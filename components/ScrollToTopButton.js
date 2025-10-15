@@ -20,7 +20,7 @@ export default function ScrollToTopButton() {
   const [visible, setVisible] = useState(false)
 
   const lenis = useLenis(( { animatedScroll, limit } ) => {
-    setVisible(animatedScroll > 1000 && (limit - animatedScroll > 700))
+    setVisible(animatedScroll > 500 && (limit - animatedScroll > 700))
   })
 
   const onClick = useCallback(() => {

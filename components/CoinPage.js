@@ -2,7 +2,6 @@
 
 import ScrumbleText from "./ScrumleText"
 import Link from "next/link"
-import CoinChart from "./CoinChart"
 import ErrorBox from "./ErrorBox"
 import CoinPageSceleton from "./CoinPageSceleton"
 import { Chart } from "./Chart"
@@ -60,7 +59,7 @@ export default function CoinPage({params}) {
 
     return (
         <div>
-            <div className="flex flex-col xl:mx-80 lg:mx-20 md:mx-10">
+            <div className="flex flex-col xl:mx-80 lg:mx-20 mx-10">
                 <div className="">
                     <ScrumbleText text={coinData.name.length >= 20 ? coinData.symbol : coinData.name}/>
                 </div>
@@ -113,13 +112,13 @@ export default function CoinPage({params}) {
 
                         <p> {"}"} </p>
                     </div>
-                    <div className="">
+                    <div className="mt-10 sm:block hidden">
                         <Chart chartData={series}/>
                     </div>
                 </div>
             </div>
             <div>
-                <p className="my-20 xl:mx-80 lg:mx-20 md:mx-10">
+                <p className="my-20 xl:mx-80 lg:mx-20 mx-10 sm:text-[1rem] text-[0.5rem]">
                     {coinData.description.en}
                 </p>
             </div>
