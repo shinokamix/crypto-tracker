@@ -3,9 +3,11 @@ import { NextResponse } from "next/server";
 
 const BASE_URL = "https://api.coingecko.com/api/v3";
 
-export async function GET() {
+export async function GET(_req, { params }) {
+    const coin = await params;
+    console.log(coin.id);
     const res = await fetch(
-        `${BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&price_change_percentage=1h,24h,7d,30d&per_page=250`,
+        `${BASE_URL}/coins/${coin.id}/market_chart?days=365&vs_currency=usd`,
         { headers: { x_cg_demo_api_key: process.env.COINGECKO_API_KEY } }
     );
 
