@@ -50,7 +50,7 @@ export default function ScrambleText({
 
             ScrollTrigger.create({
                 trigger: wrap,
-                start: "top 30%",
+                start: "top 25%",
                 end: "bottom 40%",
                 onEnter: play,
                 onEnterBack: play,
