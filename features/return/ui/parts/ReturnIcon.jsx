@@ -21,7 +21,7 @@ export default function ReturnIcon() {
             aria-hidden
             width={32}
             height={32}
-            className="w-5 h-5 sm:w-8 sm:h-8 hover:scale-110 transition-all duration-300"
+            className="w-5 h-5 sm:w-8 sm:h-8 hover:opacity-50 transition-all duration-300"
         />
     );
 }
