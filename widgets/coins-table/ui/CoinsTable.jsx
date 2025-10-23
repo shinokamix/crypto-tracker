@@ -3,7 +3,7 @@
 import { useMarkets } from "@/entities/coin/model/swr";
 import { useEffect, useMemo, useCallback } from "react";
 import { useFavorites } from "@/features/favorites/model/store";
-import { useTableStore } from "../model/store";
+import { useTableStore } from "../../../shared/model/useTableStore";
 import { useSearch } from "@/features/search/model/store";
 import tableColumns from "../model/columns";
 import TableView from "./TableView";

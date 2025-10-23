@@ -7,11 +7,15 @@ import { useLenis } from "lenis/react";
 import ActiveIcon from "./parts/ActiveIcon";
 import NotActiveIcon from "./parts/NotActiveIcon";
 
+import { useTableStore } from "@/shared/model/useTableStore";
+
 export default function FavoritesToggleButton() {
     const showOnlyFavorites = useFavorites((state) => state.showOnlyFavorites);
     const toggleShowOnlyFavorites = useFavorites(
         (state) => state.toggleShowOnlyFavorites
     );
+
+    const setPageIndex = useTableStore((s) => s.setPageIndex);
 
     const [mounted, setMounted] = useState(false);
 
@@ -25,6 +29,11 @@ export default function FavoritesToggleButton() {
 
     useEffect(() => setMounted(true), []);
 
+    const handleToggle = () => {
+        toggleShowOnlyFavorites();
+        setPageIndex(0);
+    };
+
     if (!mounted) return null;
 
     return (
@@ -33,7 +42,7 @@ export default function FavoritesToggleButton() {
             size={"content"}
             variant="ghost"
             className={`hover:opacity-50 transition-all duration-300 cursor-pointer`}
-            onClick={toggleShowOnlyFavorites}
+            onClick={handleToggle}
             ref={buttonRef}
         >
             {showOnlyFavorites ? <ActiveIcon /> : <NotActiveIcon />}
