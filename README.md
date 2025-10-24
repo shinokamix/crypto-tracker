@@ -32,7 +32,7 @@ A **Next.js** application for tracking cryptocurrency prices using the **CoinGec
 
 
 
-## 🛠 Installation
+## Installation
 
 ```bash
 # Clone the repository
